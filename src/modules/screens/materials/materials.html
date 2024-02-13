@@ -1,0 +1,44 @@
+<template>
+    <c-screen-layout onnext={handleNextClick} onback={handleBackClick}>
+        <span slot="page-title">
+            Which roof material style is right for your project?
+        </span>
+        <div slot="left-body">
+            <div class="c-m-top_large">
+                <div class="slds-grid slds-gutters slds-wrap c-container_panel c-container_material">
+                    <template for:each={roofMaterialOption} for:item="option">
+                        <div key={option.id} class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 c-meterial-contant" data-id={option.id}
+                            onclick={handleMaterialClick}>
+                            <article class={option.className} data-id={option.id}>
+                                <div class="slds-card__header slds-grid" data-id={option.id}>
+                                    <header class="slds-media slds-media_center slds-has-flexi-truncate"
+                                        data-id={option.id}>
+                                        <div class="slds-media__body" data-id={option.id}>
+                                        </div>
+                                        <div class="slds-no-flex" data-id={option.id}>
+                                            <lightning-helptext if:true={option.description} content={option.description} data-id={option.id}>
+                                            </lightning-helptext>
+                                        </div>
+                                    </header>
+                                </div>
+                                <div class="slds-card__body slds-card__body_inner" style="background: white;"
+                                    data-id={option.id}>
+                                </div>
+                                <footer class="slds-card__footer" data-id={option.id}>
+                                    <div class="c-font-size_medium" data-id={option.id}><b>{option.displayName}</b>
+                                    </div>
+                                    <div class="c-font-size_medium" data-id={option.id}>${option.pricePerSQFT}</div>
+                                </footer>
+                            </article>
+
+                        </div>
+                    </template>
+                </div>
+            </div>
+        </div>
+        <div class="right-continer" slot="right-body" style="width: 30rem;float: right;">
+            <c-svg url={props.roofSelect.selectedRoof.image}>
+            </c-svg>
+        </div>
+    </c-screen-layout>
+</template>

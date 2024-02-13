@@ -1,0 +1,41 @@
+<template>
+    <div class="c-container c-background_grid">
+        <div class="c-container_inner c-container_padding">
+            <div class="c-font-size_x-large c-color_white c-font-weight_200">Congratulations! Your proposal has been
+                emailed to you!</div>
+            <div class="slds-grid slds-wrap slds-gutters">
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_6-of-12 c-finish-column">
+                    <div class="c-circle_number">1</div>
+                    <div class="c-color_white c-font-size_large c-font-weight_100 slds-m-top_medium">Check your inbox
+                        for your custom estimate.</div>
+                    <!-- <div class="slds-m-top_large"><a class="c-color_orange">I can't find my estimate</a></div> -->
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_6-of-12 c-finish-column">
+                    <div class="c-circle_number">2</div>
+                    <div class="c-color_white c-font-size_large c-font-weight_100 slds-m-top_medium">Set up a meeting
+                        with one of our specialists to get started whenever you are ready!</div>
+                    <div class="c-schedule_meeting c-color_orange c-font-size_medium slds-m-top_large"
+                        if:true={displaySolar}>
+                        <div class="slds-grid slds-gutters">
+                            <div class="slds-col" style="text-align:center;">
+                                <a href="https://calendly.com/ameco-solar-roofing/solar-consultation"
+                                    class="schedule-link">Schedule Your Solar
+                                    Virtual Consultation</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="c-schedule_meeting c-color_orange c-font-size_medium slds-m-top_large"
+                        if:true={displayRoof}>
+                        <div class="slds-grid slds-gutters">
+                            <div class="slds-col" style="text-align:center;">
+                                <a href="https://calendly.com/ameco-solar-roofing/roof-consultation"
+                                    class="schedule-link">Schedule Your Roofing
+                                    Virtual Consultation</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

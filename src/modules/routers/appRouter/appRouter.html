@@ -1,0 +1,49 @@
+<template>
+    <div class="slds-tabs_default c-container_router">
+        <nav-switch>
+            <!-- <nav-route exact path="/">
+                <screens-solution-picker></screens-solution-picker>
+            </nav-route> -->
+            <nav-route exact path="/">
+                <screens-address></screens-address>
+            </nav-route>
+            <nav-route exact path="/address-map">
+                <screens-address-map></screens-address-map>
+            </nav-route>
+            <nav-route exact path="/utilities">
+                <screens-utilities></screens-utilities>
+            </nav-route>
+            <nav-route exact path="/solar-panels">
+                <screens-solar-panels></screens-solar-panels>
+            </nav-route>
+            <nav-route exact path="/battery-storage">
+                <screens-battery-storage></screens-battery-storage>
+            </nav-route>
+            <nav-route exact path="/cost-summary">
+                <screens-cost-summary></screens-cost-summary>
+            </nav-route>
+            <nav-route exact path="/contact-info">
+                <screens-submit-estimate></screens-submit-estimate>
+            </nav-route>
+            <nav-route exact path="/roof-select">
+                <screens-roof-select></screens-roof-select>
+            </nav-route>
+            <nav-route exact path="/materials">
+                <screens-materials></screens-materials>
+            </nav-route>
+            <nav-route exact path="/insulation">
+                <screens-insulation></screens-insulation>
+            </nav-route>
+            <nav-route exact path="/measurements">
+                <screens-measurements></screens-measurements>
+            </nav-route>
+            <nav-route exact path="/finish">
+                <screens-finish-screen></screens-finish-screen>
+            </nav-route>
+
+            <nav-route path="*">
+                <div class="slds-tabs_default__content ">Url not found</div>
+            </nav-route>
+        </nav-switch>
+    </div>
+</template>

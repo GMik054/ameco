@@ -1,0 +1,31 @@
+<template>
+    <div class="">
+        <!-- <div class="c-false-header"></div> -->
+        <div class="slds-context-bar c-navigation">
+            <div class="slds-context-bar__primary c-context-bar__primary">
+                <div
+                    class="slds-context-bar__item slds-context-bar__dropdown-trigger slds-dropdown-trigger slds-dropdown-trigger_click slds-no-hover">
+                    <div class="slds-context-bar__icon-action c-color_orange">
+
+                    </div>
+                    <span class="slds-context-bar__label-action slds-context-bar__app-name c-color_orange">
+                        <span class="slds-truncate" title="App Name">Solar Estimate</span>
+                    </span>
+                </div>
+            </div>
+            <nav class="slds-context-bar__secondary" role="navigation">
+                <ul class="slds-grid c-navigation-grid">
+                    <template for:each={navigationOptions} for:item="option">
+                        <li key={option.link} class={option.itemClass}>
+                            <a class="slds-context-bar__label-action" title={option.label}>
+                                <span class="slds-truncate c-label-navigation"
+                                    title={option.label}>{option.label}</span>
+                            </a>
+                        </li>
+                    </template>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+</template>

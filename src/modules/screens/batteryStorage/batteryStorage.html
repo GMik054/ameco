@@ -1,0 +1,112 @@
+<template>
+    <c-screen-layout onnext={handleNextClick} onback={handleBackClick} background="c-background_white-grid">
+        <span slot="page-title">
+            Will you require battery storage?
+        </span>
+        <span slot="page-sub-title">
+            A power storage system will help you store the sun's energy and use it during emergencies or to reduce your
+            power consumption during peak hours.
+            <!-- We recommend <span class="c-color_orange">{recommendedCount}
+                batteries</span> to cover your entire daily energy consumption. -->
+        </span>
+        <div slot="left-body">
+            <div class="c-m-top_large">
+                <div class="slds-grid slds-wrap c-container_panel">
+                    <template for:each={batteryStorageOption} for:item="option">
+                        <div key={option.id}
+                            class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 c-battary-storage"
+                            data-id={option.id}>
+                            <article class={option.className} data-id={option.id}>
+                                <div class="slds-card__header slds-grid" data-id={option.id}>
+                                    <header class="slds-media slds-media_center slds-has-flexi-truncate"
+                                        data-id={option.id}>
+                                        <div class="slds-media__body" data-id={option.id}>
+                                            <h2 class="slds-card__header-title" data-id={option.id}>
+                                                <a href="#" class="slds-card__header-link slds-truncate c-color_blue"
+                                                    data-id={option.id} title={option.type}>
+                                                    <span></span>
+                                                </a>
+                                            </h2>
+                                        </div>
+                                        <div class="slds-no-flex" data-id={option.id} if:true={option.description}>
+                                            <lightning-helptext content={option.description} data-id={option.id}>
+                                            </lightning-helptext>
+                                        </div>
+                                        <div class="slds-no-flex slds-hidden" data-id={option.id}
+                                            if:false={option.description}>
+                                            <lightning-helptext content={option.description} data-id={option.id}>
+                                            </lightning-helptext>
+                                        </div>
+                                    </header>
+                                </div>
+                                <div class="slds-card__body slds-card__body_inner" style="background: white;"
+                                    data-id={option.id}>
+                                    <img class="product-image" data-id={option.id} src={option.imageB64}>
+                                </div>
+                                <footer class="slds-card__footer" data-id={option.id}>
+                                    <div class="c-font-size_medium" data-id={option.id}><b>{option.displayName}</b>
+                                    </div>
+                                    <!-- <div class="c-font-size_medium" data-id={option.id}>
+                                        <lightning-formatted-number value={option.pricePerUnit} format-style="currency"
+                                            minimum-fraction-digits="0" currency-code="USD">
+                                        </lightning-formatted-number>
+                                    </div> -->
+                                    <div style="margin-top: 1rem;" data-id={option.id}>
+                                        <c-counter data-id={option.id} max={recommendedCount} min="0"
+                                            value={option.count} total-count={selectedCount}
+                                            recommended-count={recommendedCount} onchange={handleCountChange}>
+                                        </c-counter>
+                                    </div>
+                                </footer>
+                            </article>
+
+                        </div>
+                    </template>
+                    <!-- <div
+                        class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12 c-battary-storage">
+                        <article class={noBatteryCard} onclick={handleNoBatteryClick}>
+                            <div class="slds-card__header slds-grid">
+                                <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                                    <div class="slds-media__body">
+                                        <h2 class="slds-card__header-title">
+                                            <a href="#" class="slds-card__header-link slds-truncate c-color_blue">
+                                                <span></span>
+                                            </a>
+                                        </h2>
+                                    </div>
+                                    <div class="slds-no-flex">
+                                        <lightning-helptext content="Not Required">
+                                        </lightning-helptext>
+                                    </div>
+                                </header>
+                            </div>
+                            <div class="slds-card__body slds-card__body_inner"
+                                style="background: white;border-radius: 10px;">
+                            </div>
+                            <div class="c-no-battery-mask c-color_blue">
+                                <div class="slds-align_absolute-center" style="margin-top: 5rem;margin-bottom: 2rem;">
+                                    <c-svg style="width:5rem"
+                                        url="https://ameco-quote-calculator-bucket.s3.us-west-1.amazonaws.com/Resources/Icons/X.svg">
+                                    </c-svg>
+
+                                </div>
+                                <div class="c-color_blue c-align_center product-description">
+                                    I'm not interested in batteries
+                                </div>
+                            </div>
+                            <footer class="slds-card__footer">
+
+                            </footer>
+                        </article>
+
+                    </div> -->
+                </div>
+            </div>
+        </div>
+        <div class="right-continer" slot="right-body" style="width: 32rem;float: right;margin-top: 5rem;">
+            <c-svg
+                url="https://ameco-quote-calculator-bucket.s3.us-west-1.amazonaws.com/Resources/Illustration/Solar_5.svg">
+            </c-svg>
+        </div>
+    </c-screen-layout>
+</template>

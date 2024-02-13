@@ -1,0 +1,47 @@
+<template>
+    <c-screen-layout onnext={handleNextClick} onback={handleBackClick}>
+        <span slot="page-title">
+            What do you currently spend a month on electricity?
+        </span>
+        <span slot="page-sub-title">
+            Don't be shy! You're well on our way to driving those bills down into negative!
+        </span>
+        <div slot="left-body">
+            <div class="c-m-top_medium">
+                <div class="slds-grid slds-wrap slds-gutters">
+                    <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-2">
+                        <div style="position:relative">
+                            <lightning-input type="number" placeholder="Average Monthly Cost Of Electricity"
+                                label="Average Electric Bill" value={props.screenValue.electricityMonthlyCost}
+                                onchange={handleMonthlyCostChange} formatter="currency" step="0.01" class="c-validate"
+                                max="1000"
+                                message-when-range-overflow="Sorry, contact us for a custom quote for large installations."
+                                message-when-value-missing="This is required field." required>
+                            </lightning-input>
+
+                            <div class="c-input_right-text">
+                                <span>/ MO</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-2">
+                        <lightning-combobox label="Utility Provider" class="c-validate" value={utilityProviderValue}
+                            placeholder="Select Utiltiy Provider" options={utilityProviderOptions}
+                            onchange={handleProviderChange} required>
+                        </lightning-combobox>
+                    </div>
+                </div>
+
+
+
+
+
+            </div>
+        </div>
+        <div class="right-continer" slot="right-body" style="width: 25rem;float: right;">
+            <c-svg
+                url="https://ameco-quote-calculator-bucket.s3.us-west-1.amazonaws.com/Resources/Illustration/Solar_3Roofing_3.svg">
+            </c-svg>
+        </div>
+    </c-screen-layout>
+</template>

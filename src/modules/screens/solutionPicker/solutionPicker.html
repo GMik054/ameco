@@ -1,0 +1,62 @@
+<template>
+    <div class="c-container c-background_grid">
+        <div class="c-container_inner">
+            <div class="c-align_center c-heading-large c-color_white c-p-top_xxx-large">Which energy solutions are you
+                looking for?</div>
+
+            <div class="slds-grid slds-wrap slds-gutters c-p-top_xxx-large">
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12">
+                    <div class="c-solution c-m-around_x-large" onclick={handleSolarSolutionsClick}>
+                        <div class="c-image">
+                            <c-svg
+                                url="https://ameco-quote-calculator-bucket.s3.us-west-1.amazonaws.com/Resources/Illustration/QC-SolarSolutions.svg"
+                                class="c-icon_solar-solution">
+                            </c-svg>
+                        </div>
+                        <div class="c-text">
+                            <div class="c-heading-large">Solar Solutions</div>
+                            <div class="c-sub-heading-large">Solar Panels & Battery Storage</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12">
+                    <div class="c-solution c-m-around_x-large" onclick={handleRoofSolutionsClick}>
+                        <div class="c-image">
+                            <c-svg
+                                url="https://ameco-quote-calculator-bucket.s3.us-west-1.amazonaws.com/Resources/Illustration/QC-RoofSolutions.svg"
+                                class="c-icon_roof-solution">
+                            </c-svg>
+
+                        </div>
+                        <div class="c-text">
+                            <div class="c-heading-large">Roof Solutions</div>
+                            <div class="c-sub-heading-large">High Efficiency Roof Replacement</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12">
+                    <div class="c-solution c-m-around_x-large" onclick={handleSolarAndRoofSolutionsClick}>
+                        <div class="c-header">
+                            <div class="c-ribbon-icon">
+                                <c-svg
+                                    url="https://ameco-quote-calculator-bucket.s3.us-west-1.amazonaws.com/Resources/Icons/Ribbon.svg">
+                                </c-svg>
+                            </div>
+                            <div class="c-heading-large">Best Value</div>
+                        </div>
+                        <div class="c-image">
+                            <c-svg
+                                url="https://ameco-quote-calculator-bucket.s3.us-west-1.amazonaws.com/Resources/Illustration/QC-SolarandRoofSolutions.svg"
+                                class="c-icon_solar-and-roof-solution">
+                            </c-svg>
+                        </div>
+                        <div class="c-text">
+                            <div class="c-heading-large">Solar and Roof Solutions</div>
+                            <div class="c-sub-heading-large">Full Home Energy Bundle</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

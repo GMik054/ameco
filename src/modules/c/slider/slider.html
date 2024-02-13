@@ -1,0 +1,24 @@
+<template>
+    <div class={containerClass}>
+        <label class="slds-form-element__label" for="slider-id-01">
+            <span class="slds-slider-label">
+                <span class="slds-slider-label__label">{label}</span>
+                <lightning-helptext if:true={fieldLevelHelp} content={fieldLevelHelp}
+                    style="line-height: 2rem;margin-left: 0.5rem;">
+                </lightning-helptext>
+            </span>
+        </label>
+        <div class="slds-form-element__control">
+            <div class="slds-slider">
+                <input type="range" id="slider-id-01" class="slds-slider__range" value={value} max={max} min={min}
+                    onchange={handleChange} ontouchmove={handleChange} oninput={handleChange} step="50" />
+                <span class="slds-slider__value" aria-hidden="true">{value}</span>
+                <span if:true={valueLabel}>{valueLabel}</span>
+
+            </div>
+        </div>
+        <div if:true={hasError} class="slds-form-element__help">
+            {error.message}
+        </div>
+    </div>
+</template>

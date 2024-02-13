@@ -1,0 +1,13 @@
+<template>
+    <div class={containerClass}>
+        <label class="slds-form-element__label c-input_label">
+            {label}</label>
+        <div class="slds-form-element__control" style="position:relative">
+            <input type={type} placeholder={placeholder} value={inputValue} onblur={handleBlur} onkeyup={handleKeyup}
+                onchange={handleChange} class="slds-input c-input" />
+        </div>
+        <div if:true={hasError} class="slds-form-element__help">
+            {error.message}
+        </div>
+    </div>
+</template>

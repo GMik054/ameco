@@ -1,0 +1,229 @@
+<template>
+    <c-screen-layout onnext={handleNextClick} onback={handleBackClick} column="4,8"
+        background="c-background_white-grid">
+        <span slot="page-title">
+            Cost Summary
+        </span>
+
+        <div slot="left-body">
+            <div class="slds-m-top_large c-color_orange c-font-size_large">
+                Solar
+            </div>
+            <div class="slds-grid slds-wrap c-font-size_medium" if:true={displaySolarCost}>
+                <div class="slds-col slds-size_8-of-12 slds-m-top_x-small">
+                    {systemRequirement} kW Solar panels
+                </div>
+                <div class="slds-col slds-size_4-of-12 c-align_right slds-m-top_x-small">
+                    <lightning-formatted-number value={solarPanelCost} format-style="currency" currency-code="USD"
+                        minimum-fraction-digits="0">
+                    </lightning-formatted-number>
+                </div>
+                <div class="slds-col slds-size_8-of-12 slds-m-top_x-small">
+                    Battery Storage
+                </div>
+                <div class="slds-col slds-size_4-of-12 c-align_right slds-m-top_x-small">
+                    <lightning-formatted-number value={batteryStorageCost} format-style="currency" currency-code="USD"
+                        minimum-fraction-digits="0">
+                    </lightning-formatted-number>
+                </div>
+                <div class="slds-col slds-size_8-of-12 c-color_orange slds-m-top_x-small">
+                    Federal Tax Credit
+                </div>
+                <div class="slds-col slds-size_4-of-12 c-align_right c-color_orange slds-m-top_x-small">
+                    (<lightning-formatted-number value={federalTaxCredit} format-style="currency" currency-code="USD"
+                        minimum-fraction-digits="0">
+                    </lightning-formatted-number>)
+                </div>
+                <div class="slds-col slds-size_8-of-12 slds-m-top_medium">
+                    <b>Total Cost</b>
+                </div>
+                <div class="slds-col slds-size_4-of-12 c-align_right slds-m-top_medium">
+                    <b>
+                        <lightning-formatted-number value={totalSolarCostWithoutRebate} format-style="currency"
+                            currency-code="USD" minimum-fraction-digits="0">
+                        </lightning-formatted-number>
+                    </b>
+                </div>
+                <div class="slds-col slds-size_8-of-12 slds-m-top_medium">
+                    <b>Cost After Qualifying Rebates &amp; Incentives</b>
+                </div>
+                <div class="slds-col slds-size_4-of-12 c-align_right slds-m-top_medium">
+                    <b>
+                        <lightning-formatted-number value={totalSolarCost} format-style="currency" currency-code="USD"
+                            minimum-fraction-digits="0">
+                        </lightning-formatted-number>
+                    </b>
+                </div>
+            </div>
+            <div class="slds-grid slds-wrap c-font-size_medium" if:false={displaySolarCost}>
+                <div class="slds-col slds-size_12-of-12 slds-m-top_x-small c-add-element-button"
+                    onclick={handleAddSolar}>
+                    <svg class="slds-button__icon c-icon_color" aria-hidden="true">
+                        <use
+                            xlink:href="https://ameco-quote-calculator-bucket.s3.us-west-1.amazonaws.com/SLDS/icons/utility-sprite/svg/symbols.svg#add">
+                        </use>
+                    </svg>
+                    <span>Add Solar for Greater Savings</span>
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="c-color_orange c-font-size_large">
+                Roof
+            </div>
+            <div class="slds-grid slds-wrap c-font-size_medium" if:true={displayRoofCost}>
+                <div class="slds-col slds-size_8-of-12 slds-m-top_x-small">
+                    Roof Install - {roofInstallMaterial}
+                </div>
+                <div class="slds-col slds-size_4-of-12 c-align_right slds-m-top_x-small">
+                    <lightning-formatted-number value={roofInstallationCost} format-style="currency" currency-code="USD"
+                        minimum-fraction-digits="0">
+                    </lightning-formatted-number>
+                </div>
+                <!-- <div class="slds-col slds-size_8-of-12 slds-m-top_x-small">
+                    Attic Insulation - {selectedInsulation}
+                </div> -->
+                <!-- <div class="slds-col slds-size_4-of-12 c-align_right slds-m-top_x-small">
+                    <lightning-formatted-number value={insulationCost} format-style="currency" currency-code="USD"
+                        minimum-fraction-digits="0">
+                    </lightning-formatted-number>
+                </div> -->
+                <div class="slds-col slds-size_8-of-12 slds-m-top_medium">
+                    <b>Total Roof Cost</b>
+                </div>
+                <div class="slds-col slds-size_4-of-12 c-align_right slds-m-top_medium">
+                    <b>
+                        <lightning-formatted-number value={totalRoofCost} format-style="currency" currency-code="USD"
+                            minimum-fraction-digits="0">
+                        </lightning-formatted-number>
+                    </b>
+                </div>
+            </div>
+            <div class="slds-grid slds-wrap c-font-size_medium" if:false={displayRoofCost}>
+                <div class="slds-col slds-size_12-of-12 slds-m-top_x-small c-add-element-button"
+                    onclick={handleAddRoof}>
+                    <svg class="slds-button__icon c-icon_color" aria-hidden="true">
+                        <use
+                            xlink:href="https://ameco-quote-calculator-bucket.s3.us-west-1.amazonaws.com/SLDS/icons/utility-sprite/svg/symbols.svg#add">
+                        </use>
+                    </svg>
+                    <span>Add Roof for Greater Savings</span>
+                </div>
+            </div>
+        </div>
+        <div slot="right-body">
+            <div class="c-page-header c-color_orange c-align_center c-font-size_large">
+                Available Payment Options
+            </div>
+            <div class="slds-m-top_large c-cost-content">
+                <div class="slds-grid slds-wrap slds-gutters c-font-size_medium">
+                    <div
+                        class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_6-of-12 c-container_panel c-cost-summary">
+                        <article class={cashCardClass} onclick={handleSelectCash}>
+                            <div class="slds-card__header slds-grid">
+                                <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                                    <div class="slds-media__body">
+                                        <h2 class="slds-card__header-title">
+                                            <a href="#" class="slds-card__header-link slds-truncate" title="Cash">
+                                                <span class="c-page-header c-font-size_large">Cash</span>
+                                            </a>
+                                        </h2>
+                                    </div>
+                                    <div class="slds-no-flex">
+
+                                    </div>
+                                </header>
+                            </div>
+                            <div class="slds-card__body slds-card__body_inner c-cost-summary_inner-body">
+                                <div class="c-color_orange c-font-size_large">
+                                    <lightning-formatted-number value={totalCost} format-style="currency"
+                                        minimum-fraction-digits="0" currency-code="USD">
+                                    </lightning-formatted-number>
+                                </div>
+                                <div class="">
+                                    Total Estimated Cost
+                                </div>
+                                <div if:true={displaySolarCost}>
+                                    <div class="c-color_orange c-font-size_large slds-m-top_small">
+                                        <lightning-formatted-number value={totalUtilityCost} format-style="currency"
+                                            minimum-fraction-digits="0" currency-code="USD">
+                                        </lightning-formatted-number>
+                                    </div>
+                                    <div class="">
+                                        Est. {noOfYears} Year Utility Costs
+                                        <div class="small-text">Based on a 4% annual increase</div>
+                                    </div>
+                                    <hr style="margin: 1rem 0 0.8rem 0;">
+                                    <div class="c-color_blue c-font-size_large">
+                                        <lightning-formatted-number value={totalSaving} format-style="currency"
+                                            minimum-fraction-digits="0" currency-code="USD">
+                                        </lightning-formatted-number>
+                                    </div>
+                                    <div class="">
+                                        Est. {noOfYears} Year Saving
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                    <div
+                        class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_6-of-12 c-container_panel c-cost-summary">
+                        <article class={loanCardClass} onclick={handleSelectLoan}>
+                            <div class="slds-card__header slds-grid">
+                                <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                                    <div class="slds-media__body">
+                                        <h2 class="slds-card__header-title">
+                                            <a href="#" class="slds-card__header-link slds-truncate" title="Cash">
+                                                <span class="c-page-header c-font-size_large">Loan</span>
+                                            </a>
+                                        </h2>
+                                    </div>
+                                    <div class="slds-no-flex c-align_right">
+                                        <span><b>{noOfYears} Years Loan</b></span>
+                                        <div>$0 Down</div>
+                                    </div>
+                                </header>
+                            </div>
+                            <div class="slds-card__body slds-card__body_inner c-cost-summary_inner-body">
+                                <div class="c-color_orange c-font-size_large">
+                                    <lightning-formatted-number value={monthlyPaymentAmount} format-style="currency"
+                                        minimum-fraction-digits="0" currency-code="USD">
+                                    </lightning-formatted-number> / mo
+                                </div>
+                                <div class="">
+                                    Monthly Payment
+                                    <div class="small-text">Based on approved
+                                        credit</div>
+                                </div>
+                                <div if:true={displaySolarCost}>
+                                    <div class="c-color_orange c-font-size_large slds-m-top_small">
+                                        <lightning-formatted-number value={monthlyUtilityBill} format-style="currency"
+                                            minimum-fraction-digits="0" currency-code="USD">
+                                        </lightning-formatted-number> / mo
+                                    </div>
+                                    <div class="">
+                                        Current Utility Bill
+                                    </div>
+                                    <hr style="margin: 1rem 0 0.8rem 0;">
+                                    <div class="c-color_blue c-font-size_large">
+                                        <lightning-formatted-number value={nYearSavingForLoan} format-style="currency"
+                                            minimum-fraction-digits="0" currency-code="USD">
+                                        </lightning-formatted-number>
+                                    </div>
+                                    <div class="">
+                                        Est. {noOfYears} Year Saving
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </c-screen-layout>
+    <lightning-spinner if:true={displaySpinner} alternative-text="Loading" size="medium"></lightning-spinner>
+</template>

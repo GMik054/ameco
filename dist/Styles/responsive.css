@@ -1,0 +1,112 @@
+@media screen and (max-width: 768px) {
+  body {
+    position: inherit;
+  }
+
+  .c-container {
+    position: inherit;
+  }
+
+  .c-solution {
+    max-height: 42vh;
+    height: 42vh;
+  }
+  .c-p-top_xxx-large {
+    padding-top: 3vh;
+  }
+
+  .c-icon_solar-solution,
+  .c-icon_roof-solution {
+    margin: 0px auto;
+    max-width: 20rem;
+  }
+
+  .c-icon_solar-and-roof-solution {
+    margin: 0px auto;
+    max-width: 20rem;
+  }
+
+  .right-continer {
+    display: none;
+  }
+  .c-container_padding {
+    padding: 1.5rem;
+  }
+
+  .c-container_footer {
+    position: relative;
+    bottom: 0;
+  }
+
+  .c-left_content {
+    width: 100%;
+  }
+
+  .c-navigation {
+    padding: 0;
+  }
+
+  .c-container_image {
+    height: 20rem;
+  }
+  .c-solar-content {
+    margin-bottom: 1rem;
+  }
+
+  /* .c-container_panel .slds-card__body{
+        height: 20rem;
+    } */
+  .c-battary-storage {
+    margin-bottom: 1rem;
+  }
+
+  .no-battery-storage,
+  .no-insulation {
+    height: 20rem;
+  }
+  .c-cost-content {
+    padding: 0;
+  }
+  .c-cost-summary {
+    margin-bottom: 1rem;
+  }
+  .c-page-header {
+    margin-top: 2rem;
+    font-size: 1.5rem;
+  }
+  .c-finish-column {
+    padding-right: 0rem;
+  }
+
+  .c-meterial-contant {
+    margin-bottom: 1rem;
+  }
+
+  .c-insulation-contant {
+    margin-bottom: 1rem;
+  }
+
+  .c-measurement-content-container {
+    margin-bottom: 1rem;
+  }
+
+  .c-container_panel .slds-card__body.c-measurement-content {
+    height: 5rem;
+  }
+
+  .c-container_panel .slds-card__body.c-cost-summary_inner-body {
+    height: auto;
+  }
+
+  .c-inactive {
+    display: none;
+  }
+
+  .slds-context-bar__item.slds-is-active {
+    display: flex;
+  }
+
+  .c-label-navigation {
+    font-size: 1rem;
+  }
+}

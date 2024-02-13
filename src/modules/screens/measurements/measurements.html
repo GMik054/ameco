@@ -1,0 +1,64 @@
+<template>
+    <c-screen-layout onnext={handleNextClick} onback={handleBackClick} background="c-background_white-grid">
+        <span slot="page-title">
+            Roof Measurements
+        </span>
+        <span slot="page-sub-title">
+            We'll need some more details about your home's roof. Choose the roof pitch angle the most closely resembles
+            your home's roof.
+            If you're not sure, an approximation is fine. We'll confirm the details with you after.
+        </span>
+        <div slot="left-body">
+            <div class="c-color_blue slds-m-top_small slds-m-bottom_small">
+                <span class="c-input_label">Roof Pitch</span>
+                <lightning-helptext
+                    content="Roof pitch (or slope) tells you how many inches the roof rises for every 12 inches in depth."
+                    style="line-height: 2rem;margin-left: 0.5rem;">
+                </lightning-helptext>
+            </div>
+            <div class="slds-grid slds-gutters slds-wrap c-container_panel c-roof-pitch">
+                <template for:each={roofPitchOptions} for:item="option">
+                    <div key={option.id}
+                        class="slds-col slds-size_1-of-2 slds-medium-size_1-of-4 slds-large-size_1-of-4 c-measurement-content-container"
+                        data-id={option.id} onclick={handleMeasurementClick}>
+                        <article class={option.className} data-id={option.id}>
+                            <div class="slds-card__body slds-card__body_inner c-measurement-content"
+                                style={option.style} data-id={option.id} onclick={handleMeasurementClick}>
+                                <c-svg url={option.image} data-id={option.id} onclick={handleMeasurementClick}>
+                                </c-svg>
+                            </div>
+                            <footer class="slds-card__footer" data-id={option.id} onclick={handleMeasurementClick}>
+                                <div class="c-font-size_medium" data-id={option.id} onclick={handleMeasurementClick}>
+                                    <span class="c-color_orange" data-id={option.id}
+                                        onclick={handleMeasurementClick}>{option.name}</span>
+                                </div>
+                                <div class="c-font-size_medium" data-id={option.id} onclick={handleMeasurementClick}>
+                                    {option.ratio}</div>
+                            </footer>
+                        </article>
+                    </div>
+                </template>
+            </div>
+            <div class="slds-grid slds-wrap slds-gutters slds-m-top_large">
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_5-of-12 slds-large-size_5-of-12">
+                    <lightning-combobox label="Number of Stories" class="c-validate" value={initialStories}
+                        placeholder="Property Stories" options={storiesOptions} onchange={handleStoriesChange}
+                        field-level-help="Number of Stories" required>
+                    </lightning-combobox>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_7-of-12 slds-large-size_7-of-12">
+                    <c-slider label="Home Square Footage" value={initialValue} class="c-validate c-slider__range"
+                        min="0" max="8000"
+                        field-level-help="Include the entire square footage of your home structure including any detached garage structure."
+                        value-label="Sq Ft" onchange={handleRangeChange} required>
+                    </c-slider>
+                </div>
+            </div>
+        </div>
+        <div class="right-continer" slot="right-body">
+            <c-svg
+                url="https://ameco-quote-calculator-bucket.s3.us-west-1.amazonaws.com/Resources/Illustration/Roofing_7.svg">
+            </c-svg>
+        </div>
+    </c-screen-layout>
+</template>

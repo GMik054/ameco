@@ -1,0 +1,31 @@
+<template>
+    <div class="slds-grid slds-grid_align-spread">
+        <div class="slds-col slds-p-around_none">
+            <button class="slds-button slds-button_icon slds-button_icon-border c-counter-button" title="Subtract"
+                onclick={handleSubtractClick}>
+                <!-- <svg class="slds-button__icon" aria-hidden="true">
+                    <use xlink:href="https://ameco-quote-calculator-bucket.s3.us-west-1.amazonaws.com/SLDS/icons/utility-sprite/svg/symbols.svg#dash"></use>
+                </svg> -->
+                -
+                <span class="slds-assistive-text">Subtract</span>
+            </button>
+        </div>
+
+        <div class="slds-col slds-p-around_none" style="display: flex; font-size:20px;">
+            <span class="c-color_blue" style="margin:auto;">{value}</span>
+        </div>
+
+        <div class="slds-col slds-p-around_none">
+            <button class="slds-button slds-button_icon slds-button_icon-border c-counter-button" title="Add"
+                onclick={handleAddClick}>
+                <!-- <svg class="slds-button__icon" aria-hidden="true">
+                    <use
+                        xlink:href="https://ameco-quote-calculator-bucket.s3.us-west-1.amazonaws.com/SLDS/icons/utility-sprite/svg/symbols.svg#add">
+                    </use>
+                </svg> -->
+                +
+                <span class="slds-assistive-text">Add</span>
+            </button>
+        </div>
+    </div>
+</template>

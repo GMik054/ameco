@@ -1,0 +1,27 @@
+<template>
+    <div class={backgroundClass}>
+        <c-navigation></c-navigation>
+        <div class="c-container_inner c-container_padding">
+            <div class="slds-grid slds-wrap">
+                <div class={firstClass}>
+                    <div class="c-page-header c-font-size_x-large">
+                        <slot name="page-title"></slot>
+                    </div>
+                    <div class="c-left_content">
+                        <div class="c-page-sub-header">
+                            <slot name="page-sub-title"></slot>
+                        </div>
+                        <slot name="left-body"></slot>
+                    </div>
+
+                </div>
+                <div if:false={hideRight} class={secondClass}>
+                    <slot name="right-body"></slot>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="c-container_mask-white"></div> -->
+        <c-footer onnext={handleNext} onback={handleBack}></c-footer>
+
+    </div>
+</template>

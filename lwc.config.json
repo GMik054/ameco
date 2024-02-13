@@ -1,0 +1,17 @@
+{
+    "modules": [
+        {
+            "dir": "src/modules"
+        },
+        {
+            "name": "@salesforce/apex",
+            "path": "src/modules/api/salesforce.js"
+        },
+        {
+            "npm": "lwc-recipes-oss-ui-components"
+        },
+        {
+            "npm": "lightning-base-components"
+        }
+    ]
+}

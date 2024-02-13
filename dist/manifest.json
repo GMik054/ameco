@@ -1,0 +1,14 @@
+{
+    "name": "Quote Builder",
+    "description": "Build an Extension!",
+    "version": "2.0",
+    "manifest_version": 2,
+    "action": {
+        "default_popup": "index.html"
+    },
+    "permissions": [
+        "https://maps.googleapis.com/maps/api/js?callback=__googleMapsCallback&key=AIzaSyCnIenxj2UfFk1-vN9zeQoOLl6lh5wZ9tM&v=weekly",
+        "https://quotecalc-amecosolar.cs60.force.com/*"
+    ],
+    "content_security_policy": "script-src 'self' ; object-src 'self'; script-src-elem 'unsafe-eval' chrome-extension://* https://* https://*.googleapis.com"
+}

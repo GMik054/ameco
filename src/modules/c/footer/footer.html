@@ -1,0 +1,19 @@
+<template>
+    <div class="c-container_footer" style={absoluteStyle} if:false={selectedNavigationOption.hideActionButtons}>
+        <div class="c-container_inner c-container_padding c-p-top_none c-p-bottom_none">
+            <div class="slds-grid slds-grid_align-spread">
+                <div class="slds-col">
+                    <button if:true={hasBack} onclick={handleBack}
+                        class="slds-button c-button_outline-brand_black">Back</button>
+                </div>
+                <div if:true={hasNext} class="slds-col">
+                    <button onclick={handleNext} class="slds-button c-button_outline-brand_orange">Next</button>
+                </div>
+                <div if:true={hasSubmit} class="slds-col">
+                    <button onclick={handleNext} class="slds-button c-button_outline-brand_orange">Submit</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</template>

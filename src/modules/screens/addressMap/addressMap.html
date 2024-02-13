@@ -1,0 +1,17 @@
+<template>
+    <div class="c-container c-background_white">
+        <c-navigation></c-navigation>
+        <div class="c-container_map">
+
+            <div class="c-map"></div>
+            <div class="c-container_mask-white"></div>
+            <div class="c-central-text c-gradient-block">
+                <div class="c-central-text_inner">
+                    <!-- <div class="c-font-size_x-large c-color_orange">Oh hey, is this you?</div> -->
+                    <div class="c-font-size_large c-color_white">{locationAddress}</div>
+                </div>
+            </div>
+        </div>
+        <c-footer onnext={handleNext} onback={handleBack} absolute></c-footer>
+    </div>
+</template>

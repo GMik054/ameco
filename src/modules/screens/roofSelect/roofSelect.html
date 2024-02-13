@@ -1,0 +1,26 @@
+<template>
+    <c-screen-layout onnext={handleNextClick} onback={handleBackClick} column="12" background="c-background_white-grid">
+        <div slot="page-title" class="c-align_center">
+            Which roof style is right for your project?
+        </div>
+        <span slot="page-sub-title">
+        </span>
+        <div slot="left-body">
+            <div class="slds-grid slds-wrap slds-gutters c-p-top_xx-large">
+                <template for:each={roofMaterialOption} for:item="option">
+                    <div key={option.id}
+                        class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12">
+                        <div class={option.className} data-id={option.id} onclick={handleMaterialClick}>
+                            <div class="c-image" data-id={option.id} style={option.imageStyle}>
+                                <img data-id={option.id} src={option.imageB64}>
+                            </div>
+                            <div class="c-text" data-id={option.id}>
+                                <div data-id={option.id} class="c-heading-large">{option.name}</div>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </c-screen-layout>
+</template>

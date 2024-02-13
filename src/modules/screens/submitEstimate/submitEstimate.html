@@ -1,0 +1,74 @@
+<template>
+    <c-screen-layout onnext={handleNextClick} onback={handleBackClick}>
+        <span slot="page-title">
+            You're almost there!
+        </span>
+        <span slot="page-sub-title">
+            Please finish up your cost estimate by filling out the contact information below.
+        </span>
+        <div slot="left-body">
+            <div class="slds-grid slds-gutters slds-wrap">
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_6-of-12 c-m-top_medium">
+                    <lightning-input type="text" placeholder="Enter Your First Name" label="First Name"
+                        value={props.screenValue.firstName} onchange={handleFirstNameChange} class="c-validate"
+                        required>
+                    </lightning-input>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_6-of-12 c-m-top_medium">
+                    <lightning-input type="text" placeholder="Enter Your Last" label="Last Name"
+                        value={props.screenValue.lastName} onchange={handleLastNameChange} class="c-validate" required>
+                    </lightning-input>
+                </div>
+
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_6-of-12 c-m-top_medium">
+                    <lightning-input type="text" label="Phone Number" class="c-validate" placeholder="(343)-343-3434"
+                        value={props.screenValue.phoneNumber} onchange={handleNumberChange} required></lightning-input>
+                </div>
+
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_6-of-12 c-m-top_medium">
+                    <c-input type="email" class="c-validate" onchange={handleEmailAddressChange}
+                        value={props.screenValue.emailAddress} placeholder="Where can we send your estimate?"
+                        label="Email Address" required>
+                    </c-input>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_12-of-12 slds-large-size_12-of-12 c-m-top_medium custom-radio-group">
+                    <lightning-radio-group
+                            label="How did you hear about us?"
+                            options={sourceOptions}
+                            value={props.screenValue.selectedSource}
+                            onchange={handleSourceChange}
+                            class="c-validate"
+                            required
+                    >
+                    </lightning-radio-group>
+                </div>
+                <template if:true={isReferralSelected}>
+                    <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_6-of-12 c-m-top_medium">
+                        <lightning-input
+                                type="text"
+                                label="Referral Phone Number"
+                                class="c-validate"
+                                placeholder="(343)-343-3434"
+                                value={props.screenValue.referralPhoneNumber}
+                                onchange={handleReferralPhoneNumberChange}
+                                required
+                        ></lightning-input>
+                    </div>
+                </template>
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_12-of-12 c-m-top_medium"
+                    style="margin-top: 3.5rem;">
+                    <lightning-input type="checkbox" class="c-validate"
+                        label="I agree to receive calls, text messages and email with promotional offers"
+                        onchange={handleAgreeChange} checked={props.screenValue.agreed} required>
+                    </lightning-input>
+                </div>
+            </div>
+        </div>
+        <div class="right-continer" slot="right-body" style="width: 30rem;float: right;">
+            <c-svg
+                url="https://ameco-quote-calculator-bucket.s3.us-west-1.amazonaws.com/Resources/Illustration/Solar_7Roofing_9.svg">
+            </c-svg>
+        </div>
+    </c-screen-layout>
+    <lightning-spinner if:true={displaySpinner} alternative-text="Loading" size="medium"></lightning-spinner>
+</template>

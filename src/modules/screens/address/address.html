@@ -1,0 +1,48 @@
+<template>
+    <c-screen-layout onnext={handleNextClick} onback={handleBackClick}>
+        <span slot="page-title">
+            {pageHeader}
+        </span>
+        <span slot="page-sub-title">
+            Get started on your path to energy independence by filling out the information below...
+        </span>
+        <div slot="left-body">
+            <div class="c-m-top_medium">
+                <c-address-search class="c-validate" type="text" placeholder="What is the address of your project?"
+                    value={cloneAddressData.address} label="Property Address" onchange={handleAddressChange} required>
+                </c-address-search>
+            </div>
+            <div class="c-m-top_medium">
+                <div class="interest-header">How may we help you? Choose one or more options below!</div>
+                <div class="c-m-top_medium">
+                    <div class="slds-grid slds-gutters" style="margin-left: -12px;">
+                        <div class="slds-col slds-no-flex">
+                            <div class={solarClass} onclick={handleSolarClick}>
+                                Solar
+                            </div>
+                        </div>
+                        <div class="slds-col">
+                            <div class={roofingClass} style="margin-left: 1px;" onclick={handleRoofingClick}>
+                                Roofing
+                            </div>
+                        </div>
+                    </div>
+                    <div if:true={displayInterestError} class="slds-required" style="display:block">
+                        Please select interest.
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="c-m-top_medium">
+                <c-input type="email" class="c-validate" onchange={handleEmailAddressChange}
+                    value={cloneAddressData.emailAddress} placeholder="Where can we send your estimate?"
+                    label="Email Address" required>
+                </c-input>
+            </div> -->
+        </div>
+        <div class="right-continer" slot="right-body" style="margin-top: -4rem;">
+            <c-svg
+                url="https://ameco-quote-calculator-bucket.s3.us-west-1.amazonaws.com/Resources/Illustration/Solar_1.svg">
+            </c-svg>
+        </div>
+    </c-screen-layout>
+</template>
